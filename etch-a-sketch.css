@@ -1,0 +1,42 @@
+h1 {
+    margin-left: 590px;
+    position: relative;
+    top: 30px;
+    font-size: 60px;
+    padding: 0;
+    
+
+}
+
+#container {
+    background-color: black;
+    width: auto;
+    height: auto;
+    background: 50px;
+    margin-top: 30px;
+    margin-left: 585px;
+    display: grid;
+    grid-template-columns: repeat(16, 25px);
+    grid-template-rows: repeat(16, 25px);
+    align-items: flex-start;
+}
+
+.square {
+    background-color: white;
+    display: grid;
+    border: 1px solid black;
+    height: 100%;
+    width: 100%;
+    
+}    
+
+
+
+
+
+
+/*
+.square:hover 
+    background-color:black;
+
+*/
