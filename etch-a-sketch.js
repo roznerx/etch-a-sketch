@@ -1,12 +1,36 @@
 const container = document.getElementById("container");
+container.style.width = "400px";
+container.style.height = "400px";
 
-function createGrid(n) {
+function createGrid(n) {    
 
     for (i = 0; i < n; i++) {
+
+        const squaresPerSide = Math.sqrt(n);
         const square = document.createElement("div");
+
+        let width = 400 / parseInt(squaresPerSide);
+        let height = 400 / parseInt(squaresPerSide);
+
+        square.style.width = width;
+        square.style.height = height;
+
         square.classList.add("square");
         container.appendChild(square);
+        
+        container.style.setProperty("grid-template-columns", "repeat(" + squaresPerSide + "," + height + "px)");
+        container.style.setProperty("grid-template-rows", "repeat(" + squaresPerSide + "," + width + "px)");
+
     }
+
+    const square = document.querySelectorAll(".square");
+
+    square.forEach(function(elem) {
+
+        elem.addEventListener("mouseover", function(event) {
+            event.target.style.backgroundColor = "black";
+        });
+    });
 }
 
 function clearGrid() {
@@ -18,46 +42,37 @@ function clearGrid() {
 
 }
 
-createGrid(256);
-
 const clear = document.getElementById("clear");
 const resize = document.getElementById("resize");
-const square = document.querySelectorAll(".square");
-
-square.forEach(function(elem) {
-
-    elem.addEventListener("mouseover", function(event) {
-        event.target.style.backgroundColor = "black";
-        console.log("Event triggered");
-    });
-});
 
 clear.addEventListener("click", function() {
+
+    const square = document.querySelectorAll(".square");
 
     for (i = 0; i < square.length; i++) {
         if (square[i].style.backgroundColor = "black") {
             square[i].style.backgroundColor = "white";
-            console.log("Board cleared");
         }
     }
 });
 
 resize.addEventListener("click", function() {
 
-    clearGrid()
-
     const squaresPerSide = prompt("Select number of squares per side");
     let inputNum = parseFloat(squaresPerSide);
 
     if (inputNum > 100) {
 
-        return prompt("Select number of squares per side");
+        prompt("Select number of squares per side");
         
     } else if (inputNum != null) {
         
+        clearGrid()
         createGrid(inputNum * inputNum);
-        container.style.setProperty('grid-template-columns', 'repeat(' + inputNum + ', 25px)');
-        container.style.setProperty('grid-template-rows', 'repeat(' + inputNum + ', 25px)');
-        console.log("Board resized to " + inputNum + " squares per side");
+   
     }
 });
+
+createGrid(256);
+
+
