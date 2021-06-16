@@ -7,11 +7,25 @@ h1 {
 }
 
 #clear {
-    margin-left: 590px;
+    margin-left: 600px;
 }
 
 #resize {
     margin-left: 30px;
+}
+
+#black {
+    margin-left: 40px;
+}
+
+#colors {
+    margin-left: 50px;
+}
+
+button:hover{
+    color: #59a1ff;
+    border: #59a1ff solid 1px;
+    background:#fff;
 }
 
 #container {

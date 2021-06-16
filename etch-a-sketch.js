@@ -17,7 +17,7 @@ function createGrid(n) {
 
         square.classList.add("square");
         container.appendChild(square);
-        
+
         container.style.setProperty("grid-template-columns", "repeat(" + squaresPerSide + "," + height + "px)");
         container.style.setProperty("grid-template-rows", "repeat(" + squaresPerSide + "," + width + "px)");
 
@@ -45,6 +45,7 @@ function clearGrid() {
 const clear = document.getElementById("clear");
 const resize = document.getElementById("resize");
 
+
 clear.addEventListener("click", function() {
 
     const square = document.querySelectorAll(".square");
@@ -69,10 +70,41 @@ resize.addEventListener("click", function() {
         
         clearGrid()
         createGrid(inputNum * inputNum);
-   
+
     }
 });
 
+const blackMode = document.getElementById("black");
+
+blackMode.addEventListener("click", function() {
+
+    const square = document.querySelectorAll(".square");
+
+    square.forEach(function(elem) {
+
+        elem.addEventListener("mouseover", function(event) {
+            event.target.style.backgroundColor = "black";
+        });
+    });
+})
+
+const colorMode = document.getElementById("colors");
+
+colorMode.addEventListener("click", function() {
+
+    const square = document.querySelectorAll(".square");
+
+    square.forEach(function(elem) {
+
+        elem.addEventListener("mouseover", function(event) {                
+                
+            let r = Math.floor(Math.random() * 256);
+            let g = Math.floor(Math.random() * 256);
+            let b = Math.floor(Math.random() * 256);
+            event.target.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+
+        });
+    });
+});
+
 createGrid(256);
-
-
